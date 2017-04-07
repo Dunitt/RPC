@@ -1,0 +1,176 @@
+[
+	{
+		"method": "sum",
+		"list": ["int", "int"],
+		"names": {
+			"a": "int",
+			"b": "int"
+		}
+	},
+	{
+		"method": "sum",
+		"list": ["double", "double"],
+		"names": {
+			"a": "double",
+			"b": "double"
+		}
+	},
+	{
+		"method": "subtract",
+		"list": ["int", "int"],
+		"names": {
+			"a": "int",
+			"b": "int"
+		}
+	},
+	{
+		"method": "subtract",
+		"list": ["double", "double"],
+		"names": {
+			"a": "double",
+			"b": "double"
+		}
+	},
+	{
+		"method": "multiply",
+		"list": ["int", "int"],
+		"names": {
+			"a": "int",
+			"b": "int"
+		}
+	},
+	{
+		"method": "multiply",
+		"list": ["double", "double"],
+		"names": {
+			"a": "double",
+			"b": "double"
+		}
+	},
+	{
+		"method": "division",
+		"list": ["int", "int"],
+		"names": {
+			"a": "int",
+			"b": "int"
+		}
+	},
+	{
+		"method": "division",
+		"list": ["double", "double"],
+		"names": {
+			"a": "double",
+			"b": "double"
+		}
+	},
+	{
+		"method": "pow",
+		"list": ["double", "double"],
+		"names": {
+			"a": "double",
+			"b": "double"
+		}
+	},
+	{
+		"method": "sqrt",
+		"list": ["double"],
+		"names": {
+			"a": "double"
+		}
+	},
+	{
+		"method": "cos",
+		"list": ["double"],
+		"names": {
+			"a": "double"
+		}
+	},
+	{
+		"method": "sin",
+		"list": ["double"],
+		"names": {
+			"a": "double"
+		}
+	},
+	{
+		"method": "tan",
+		"list": ["double"],
+		"names": {
+			"a": "double"
+		}
+	},
+	{
+		"method": "atan2",
+		"list": ["double", "double"],
+		"names": {
+			"b": "double",
+			"a": "double"
+		}
+	},
+	{
+		"method": "acos",
+		"list": ["double"],
+		"names": {
+			"a": "double"
+		}
+	},
+	{
+		"method": "asin",
+		"list": ["double"],
+		"names": {
+			"a": "double"
+		}
+	},
+	{
+		"method": "atan",
+		"list": ["double"],
+		"names": {
+			"a": "double"
+		}
+	},
+	{
+		"method": "cosh",
+		"list": ["double"],
+		"names": {
+			"a": "double"
+		}
+	},
+	{
+		"method": "sinh",
+		"list": ["double"],
+		"names": {
+			"a": "double"
+		}
+	},
+	{
+		"method": "tanh",
+		"list": ["double"],
+		"names": {
+			"a": "double"
+		}
+	},
+	{
+		"method": "ccos",
+		"list": ["double", "double"],
+		"names": {
+			"a": "double",
+			"b": "double"
+		}
+	},
+	{
+		"method": "csin",
+		"list": ["double", "double"],
+		"names": {
+			"a": "double",
+			"b": "double"
+		}
+	},
+	{
+		"method": "ctan",
+		"list": ["double", "double"],
+		"names": {
+			"a": "double",
+			"b": "double"
+		}
+	}
+]

@@ -1,0 +1,83 @@
+[
+	{
+		"id": null,
+		"jsonrpc": "2.0",
+		"error": {
+			"code": -32700,
+			"message": "Parse error",
+			"meaning": "Invalid JSON was received by the server. An error occurred on the server while parsing the JSON text."
+		}
+	},
+	{
+		"id": null,
+		"jsonrpc": "2.0",
+		"code": {
+			"error": -32600,
+			"message": "Invalid Request",
+			"meaning": "The JSON sent is not a valid Request object."
+		}
+	},
+	{
+		"id": null,
+		"jsonrpc": "2.0",
+		"error": {
+			"code": -32601,
+			"message": "Method not found",
+			"meaning": "The method does not exist / is not available."
+		}
+	},
+	{
+		"id": null,
+		"jsonrpc": "2.0",
+		"error": {
+			"code": -32602,
+			"message": "Invalid params",
+			"meaning": "Invalid method parameter(s)."
+		}
+	},
+	{
+		"id": null,
+		"jsonrpc": "2.0",
+		"error": {
+			"code": -32603,
+			"message": "Internal error",
+			"meaning": "Internal JSON-RPC error."
+		}
+	},
+	{
+		"id": null,
+		"jsonrpc": "2.0",
+		"error": {
+			"code": -32000,
+			"message": "Division by zero",
+			"meaning": "Internal JSON-RPC error."
+		}
+	},
+	{
+		"id": null,
+		"jsonrpc": "2.0",
+		"error": {
+			"code": -32001,
+			"message": "Domain error",
+			"meaning": "Internal JSON-RPC error."
+		}
+	},
+	{
+		"id": null,
+		"jsonrpc": "2.0",
+		"error": {
+			"code": -32002,
+			"message": "Range error",
+			"meaning": "Internal JSON-RPC error."
+		}
+	},
+	{
+		"id": null,
+		"jsonrpc": "2.0",
+		"error": {
+			"code": -32003,
+			"message": "Unexpected error",
+			"meaning": "Internal JSON-RPC error."
+		}
+	}
+]
