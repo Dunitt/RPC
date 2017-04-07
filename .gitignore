@@ -1,0 +1,6 @@
+
+# Bibliotecas
+/libmicrohttpd
+
+# Ejecutables
+*.out
