@@ -7,6 +7,8 @@
 #include <sys/socket.h>
 #include <microhttpd.h>
 
+#include "Processor.cpp"
+
 using namespace std;
 
 #define PORT 8888

@@ -93,6 +93,9 @@ static int answer_to_connection (void *cls, struct MHD_Connection *connection, c
 
 int main(){
 
+	if(Processor::init("./MethodSettings.json", "./Errors.json"))
+		return 1;
+
 	struct MHD_Daemon *daemon;
 	daemon = MHD_start_daemon (MHD_USE_SELECT_INTERNALLY, PORT, NULL, NULL, 
 		&answer_to_connection, NULL, MHD_OPTION_NOTIFY_COMPLETED, &request_completed, NULL, MHD_OPTION_END);
