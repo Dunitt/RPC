@@ -6,6 +6,8 @@
 
 #include "json.hpp"
 
+#include "Dispatcher.cpp"
+
 using namespace std;
 using json = nlohmann::json;
 
@@ -23,11 +25,7 @@ typedef enum STATUS{
 	UNEXPECTED_ERROR
 }STATUS;
 
-typedef enum TYPE_DATA{
-	INTEGER,
-	DOUBLE,
-	COMPLEX
-}TYPE_DATA;
+
 
 /*
 typedef enum TYPE_ERRORS{
@@ -43,14 +41,7 @@ typedef enum TYPE_ERRORS{
 }TYPE_ERRORS;
 */
 
-typedef struct REQUEST_DATA{
 
-	int nparams;
-	json params;
-	string method;
-	vector<TYPE_DATA> types;
-
-}REQUEST_DATA;
 
 class Processor{
 
@@ -62,10 +53,12 @@ class Processor{
 		static json Methods;
 		vector<json> requests;
 		vector<json> response;
-		vector<REQUEST_DATA> data;
+		Dispatcher dispatcher;
+		//vector<REQUEST_DATA> data;
 		//vector<STATUS> status_request;
 
 		STATUS validate(string str);
+
 
 	public:
 		Processor(const char* inRequest);
