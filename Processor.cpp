@@ -26,8 +26,8 @@ Processor::Processor(const char *inRequest){
 		for(json::iterator it= inJson.begin(); it != inJson.end(); ++it)
 			requests.push_back(*it);
 
-	for(int i= 0; i<requests.size(); ++i)
-		cout << requests[i] << endl;
+	//for(int i= 0; i<requests.size(); ++i)
+	//	cout << requests[i] << endl;
 
 }
 
@@ -174,8 +174,39 @@ STATUS Processor::validate(string str){
 
 void Processor::Process(){
 
+	json out;
+	STATUS status;
 	vector<json>::iterator it;
-	for(it= requests.begin(); it != requests.end(); ++it)
-		status_request.push_back(validate(it->dump()));
+		cout << "Entro" << endl;
 
+	for(it= requests.begin(); it != requests.end(); ++it){
+		//status_request.push_back(validate(it->dump()));
+
+		cout << *it << endl;
+
+		status= validate(it->dump());
+
+		if(status >= PARSE_ERROR){
+
+			out= Errors[status];
+			if(status != PARSE_ERROR && it->find("id") != it->end())
+				out["id"]= (*it)["id"];
+
+			cout << out << endl;
+
+		}else{
+
+
+
+		}
+
+		response.push_back(out);
+
+	}
+
+
+}
+
+string Processor::getResponse(){
+	return outJson.dump();
 }

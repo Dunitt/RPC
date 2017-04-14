@@ -61,8 +61,11 @@ static int answer_to_connection (void *cls, struct MHD_Connection *connection, c
 		cout << "*****************************************************************************************************" << endl;
 		cout << "RECIBIDO: " << dataJSON->data << endl;
 
-		string strResponse= "POSIBLE RESPUESTA";
-		Processor(dataJSON->data);
+		string strResponse;
+		Processor processor= Processor(dataJSON->data);
+		processor.Process();
+		strResponse= processor.getResponse();
+
 
 		char *page= (char*) malloc(strResponse.size() + 1);
 		if(page == NULL)

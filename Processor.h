@@ -63,7 +63,7 @@ class Processor{
 		vector<json> requests;
 		vector<json> response;
 		vector<REQUEST_DATA> data;
-		vector<STATUS> status_request;
+		//vector<STATUS> status_request;
 
 		STATUS validate(string str);
 
@@ -71,5 +71,6 @@ class Processor{
 		Processor(const char* inRequest);
 		static int init(const char *pathMethods, const char *pathErrors);
 		void Process();
+		string getResponse();
 
 };
