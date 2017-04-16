@@ -46,7 +46,7 @@ namespace ns{
 		json result;
 		STATUS status;	
 		string method;
-		//bool notification;
+		bool notification;
 		vector<TYPE_DATA> types;
 
 	}REQUEST_DATA;

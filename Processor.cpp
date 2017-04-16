@@ -13,6 +13,7 @@ namespace ns{
     	//Definir esto como una conversión de REQUEST_DATA a json y viceversa.
     	cout << "**********************************************" << endl;
     	cout << "REQUEST_DATA: " << endl;
+    	cout << "NOTIFICATION: " << r.notification << endl;
     	cout << "ID: " << r.id << endl;
     	cout << "#PARAMS: " << r.nparams << endl;
     	cout << "PARAMS: " << r.params << endl;
@@ -25,14 +26,18 @@ namespace ns{
     	cout << endl;
     	cout << "**********************************************" << endl;
 
+    	if(r.notification){
+    		j= nullptr;
+    		return;
+    	}
+
     	if(r.status < PARSE_ERROR){
     		j= {{"jsonrpc", "2.0"},{"result", r.result}};
     	}else{
     		j= Processor::Errors[r.status];
     	}
 
-		if(r.status != NOTIFICATION_OK)
-			j["id"]= r.id;
+		j["id"]= r.id;
 
 		cout << "**********************************************" << endl;
 		cout << "JSON: " << endl << j.dump(4) << endl;
@@ -42,14 +47,17 @@ namespace ns{
 
     void from_json(const json& j, REQUEST_DATA& r){
 
-		if(j.find("id") != j.end()){
-			r.id= j["id"];
-			r.status= REQUEST_OK;
-		}else
-			r.status= NOTIFICATION_OK;
-
-
+    	r.nparams= 0;
+		r.status= REQUEST_OK;
 		r.method= j["method"];
+    	r.notification= false;
+
+		if(j.find("id") != j.end())
+			r.id= j["id"];
+		else
+			r.notification= true;
+		
+
 		if(j.find("params") != j.end()){
 
 			json::const_iterator it;
@@ -261,9 +269,7 @@ STATUS Processor::validate(string str){
 	if(!p)
 		return INVALID_PARAMS;
 
-	if(in.find("id") == in.end())
-		return NOTIFICATION_OK;
-	else if(!in["id"].is_string() && !in["id"].is_number() && !in["id"].is_null())
+	if(in.find("id") != in.end() && !(in["id"].is_string() || in["id"].is_number() || in["id"].is_null()))
 		return INVALID_REQUEST;
 
 	return REQUEST_OK;
@@ -274,6 +280,7 @@ void Processor::Process(){
 
 	json out;
 	STATUS status;
+	bool notification;
 	vector<json>::iterator it;
 	//cout << "Entro" << endl;
 
@@ -281,13 +288,17 @@ void Processor::Process(){
 		//status_request.push_back(validate(it->dump()));
 
 		//cout << *it << endl;
-
+		out= nullptr;
+		notification= false;
 		status= validate(it->dump());
+		cout << "STATUS: " << status << endl;
+		if(status != PARSE_ERROR && status != INVALID_REQUEST && it->find("id") == it->end())
+			notification= true;
 
 		if(status >= PARSE_ERROR){
 
 			out= Errors[status];
-			if(status != PARSE_ERROR && it->find("id") != it->end())
+			if(status != PARSE_ERROR && status != INVALID_REQUEST && !notification)
 				out["id"]= (*it)["id"];
 
 			cout << out << endl;
@@ -301,7 +312,7 @@ void Processor::Process(){
 
 		}
 
-		if(status != NOTIFICATION_OK)
+		if(!notification)
 			response.push_back(out);
 
 	}
