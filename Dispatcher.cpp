@@ -62,13 +62,17 @@ json Dispatcher::Dispatch(REQUEST_DATA req){
 
 	}else if(all_of(req.types.begin(), req.types.end(), [](TYPE_DATA t){return t == INTEGER;})){
 
-		int r= _Dispatch(req.method, req.params[0].get<int>(), req.params[1].get<int>());
+		int another= ((req.params.size() == 2) ? req.params[1].get<int>():1);
+
+		int r= _Dispatch(req.method, req.params[0].get<int>(), another);
 		req.result= r;
 		cout << "RESULTADO: " << r << endl;
 
 	}else if(all_of(req.types.begin(), req.types.end(), [](TYPE_DATA t){return t == DOUBLE;})){
 
-		double r= _Dispatch(req.method, req.params[0].get<double>(), req.params[1].get<double>());
+		double another= ((req.params.size() == 2) ? req.params[1].get<double>():1);
+
+		double r= _Dispatch(req.method, req.params[0].get<double>(), another);
 		req.result= r;
 		cout << "RESULTADO: " << r << endl;
 
