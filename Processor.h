@@ -11,19 +11,7 @@
 using namespace std;
 using json = nlohmann::json;
 
-typedef enum STATUS{
-	REQUEST_OK= -2,
-	NOTIFICATION_OK= -1,
-	PARSE_ERROR= 0,
-	INVALID_REQUEST,
-	METHOD_NOT_FOUND,
-	INVALID_PARAMS,
-	INTERNAL_ERROR,
-	DIVISION_BY_ZERO,
-	DOMAIN_ERROR,
-	RANGE_ERROR,
-	UNEXPECTED_ERROR
-}STATUS;
+
 
 
 
@@ -45,12 +33,14 @@ typedef enum TYPE_ERRORS{
 
 class Processor{
 
+	public:
+		static json Errors;
+		static json Methods;
+
 	private:
 		json inJson;
 		json outJson;
 		bool isBatch;
-		static json Errors;
-		static json Methods;
 		vector<json> requests;
 		vector<json> response;
 		Dispatcher dispatcher;
