@@ -113,6 +113,7 @@ class Dispatcher{
 
 	public:
 		Dispatcher();
+		~Dispatcher();
 		json Dispatch(REQUEST_DATA req);
 
 };

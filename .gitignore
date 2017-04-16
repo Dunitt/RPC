@@ -1,6 +1,7 @@
 
 # Bibliotecas
 /libmicrohttpd
+/curl
 
 # Ejecutables
 *.out

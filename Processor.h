@@ -52,6 +52,7 @@ class Processor{
 
 	public:
 		Processor(const char* inRequest);
+		~Processor();
 		static int init(const char *pathMethods, const char *pathErrors);
 		void Process();
 		string getResponse();

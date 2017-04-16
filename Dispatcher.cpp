@@ -42,6 +42,10 @@ Dispatcher::Dispatcher(){
 
 }
 
+Dispatcher::~Dispatcher(){
+	
+}
+
 
 json Dispatcher::Dispatch(REQUEST_DATA req){
 

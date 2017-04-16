@@ -126,6 +126,10 @@ Processor::Processor(const char *inRequest){
 
 }
 
+Processor::~Processor(){
+	
+}
+
 int Processor::init(const char *pathMethods, const char *pathErrors){
 
 	ifstream ifs;
