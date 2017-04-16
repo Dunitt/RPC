@@ -372,7 +372,7 @@ double ClientStub::sum(double a, double b, bool notification= false){
 
 }
 
-/*
+
 int ClientStub::subtract(int a, int b, bool notification= false){
 
 	if(batch == RECEIVED)
@@ -1100,4 +1100,4 @@ complex<double> ClientStub::ctan(complex<double> cplx, bool notification= false)
 	//cout << response << endl;
 
 }
-*/
+

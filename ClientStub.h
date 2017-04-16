@@ -57,7 +57,7 @@ class ClientStub{
 
 		int subtract(int a, int b, bool notification);
 		double subtract(double a, double b, bool notification);
-	/*
+	
 		int multiply(int a, int b, bool notification);
 		double multiply(double a, double b, bool notification);
 
@@ -83,6 +83,6 @@ class ClientStub{
 
 		complex<double> ccos(complex<double> cplx, bool notification);
 		complex<double> csin(complex<double> cplx, bool notification);
-		complex<double> ctan(complex<double> cplx, bool notification);*/
+		complex<double> ctan(complex<double> cplx, bool notification);
 
 };
