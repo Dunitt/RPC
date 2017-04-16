@@ -3,5 +3,9 @@
 /libmicrohttpd
 /curl
 
+# Temporales
+/__pycache__
+
 # Ejecutables
 *.out
+*.pyc
