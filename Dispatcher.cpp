@@ -48,11 +48,11 @@ json Dispatcher::Dispatch(REQUEST_DATA req){
 	
 
 	//try{
-
+/*
 	errno = 0;
     if(math_errhandling & MATH_ERREXCEPT)
         feclearexcept(FE_ALL_EXCEPT);
-
+*/
 	if(req.method == "ccos" || req.method == "csin" || req.method == "ctan"){
 
 		complex<double> cplx(req.params[0], req.params[1]);
@@ -77,23 +77,48 @@ json Dispatcher::Dispatch(REQUEST_DATA req){
 	//}catch(...){
 
 	//cout << "NADA" << endl;
+/*
+	if((math_errhandling & MATH_ERRNO) && (math_errhandling & MATH_ERREXCEPT)){
 
-	if(math_errhandling & MATH_ERRNO){
-
+		cout << "ALGUNA EXCEPCIÓN" << endl;
 		//data.
 
-    	if(errno == EDOM){
+    	if(errno == EDOM && fetestexcept(FE_INVALID)){
     		printf("errno set to EDOM\n");
     		req.status= DOMAIN_ERROR;
     		//outJson["error"]= errors[6]["error"];
     	}
 
-    	if(errno == ERANGE){
+    	if(errno == ERANGE && fetestexcept(FE_DIVBYZERO)){
     		printf("errno set to ERANGE\n");
     		req.status= RANGE_ERROR;
     		//outJson["error"]= errors[7]["error"];
     	}
 
+    	if(fetestexcept(FE_DIVBYZERO)){
+			printf("FE_DIVBYZERO raised\n");
+			req.status= DIVISION_BY_ZERO;
+			//outJson["error"]= errors[5]["error"];
+		}
+
+    	if(errno == ERANGE){
+
+    		if(fetestexcept(FE_UNDERFLOW)){
+	    		printf("FE_UNDERFLOW raised\n");
+	    		req.status= UNDERFLOW_ERROR;
+	    		//outJson["error"]= errors[7]["error"];
+	    	}
+
+	    	if(fetestexcept(FE_OVERFLOW)){
+	    		printf("FE_OVERFLOW raised\n");
+	    		req.status= OVERFLOW_ERROR;
+	    		//outJson["error"]= errors[7]["error"];
+	    	}
+
+    	}
+*/
+	
+/*
 	}else if(math_errhandling & MATH_ERREXCEPT){
 
 		if(fetestexcept(FE_INVALID)){
@@ -121,7 +146,7 @@ json Dispatcher::Dispatch(REQUEST_DATA req){
     	}
 
   	}
-
+*/
 	//}
 
 	//json outJson= req;
@@ -170,8 +195,8 @@ double Dispatcher::multiply(double a, double b){
 
 
 int Dispatcher::division(int a, int b){
-	//if(b == 0)
-	//	throw std::overflow_error("Divide by zero exception");
+	if(b == 0)
+		throw std::overflow_error("Divide by zero exception");
 	return a / b;
 }
 
