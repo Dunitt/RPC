@@ -55,5 +55,34 @@ class ClientStub{
 		int sum(int a, int b, bool notification);
 		double sum(double a, double b, bool notification);
 
+		int subtract(int a, int b, bool notification);
+		double subtract(double a, double b, bool notification);
+	/*
+		int multiply(int a, int b, bool notification);
+		double multiply(double a, double b, bool notification);
+
+		int division(int a, int b, bool notification);
+		double division(double a, double b, bool notification);
+
+		double pow(double a, double b, bool notification);
+
+		double sqrt(double a, bool notification);
+
+		
+		double cos(double alpha, bool notification);
+		double sin(double alpha, bool notification);
+		double tan(double alpha, bool notification);
+		double atan2(double beta, double alpha, bool notification);
+		double acos(double alpha, bool notification);
+		double asin(double alpha, bool notification);
+		double atan(double alpha, bool notification);
+
+		double cosh(double alpha, bool notification);
+		double sinh(double alpha, bool notification);
+		double tanh(double alpha, bool notification);
+
+		complex<double> ccos(complex<double> cplx, bool notification);
+		complex<double> csin(complex<double> cplx, bool notification);
+		complex<double> ctan(complex<double> cplx, bool notification);*/
 
 };
