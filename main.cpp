@@ -388,7 +388,7 @@ int main(){
 	client= new ClientStub("localhost", 8888);
 	
 	std::cout << std::boolalpha;
-	/*for(int i= 0; i<10000; ++i){
+	for(int i= 0; i<10000; ++i){
 	try{
 	
 		client->beginBatch();
@@ -410,8 +410,9 @@ int main(){
 	}catch(const char* msg){
 		cout << msg << endl;
 	}
-}*/
+}
 	
+	for(int i= 0; i<10000; ++i){
 	cout << "testSUM: " << testSUM(1.3, 3.2) << endl;
 	cout << "*************************************************************************" << endl;
 	cout << "testSUBTRACT: " << testSUBTRACT(3, 34) << endl;
@@ -456,6 +457,7 @@ int main(){
 	cout << "*************************************************************************" << endl;
 	cout << "testCTAN: " << testCTAN(12.4, 8.7 ) << endl;
 	cout << "*************************************************************************" << endl;
+}
 	
 
 	return 0;

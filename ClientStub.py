@@ -32,9 +32,9 @@ class ClientStub():
 			return
 
 		self.batch= BatchStage.READY
-		data= json.dumps(self.req)
-		print("ENVIADO: ", data)
-		self.send(data)
+		#data= json.dumps(self.req)
+		print("ENVIADO: ", self.req)
+		self.send(self.req)
 		self.batch= BatchStage.RECEIVED
 
 
@@ -85,13 +85,15 @@ class ClientStub():
 				raise NameError("Invalid response")
 
 
-	def send(self, data):
+	def send(self, inJson):
 		
 		#if self.isReady():
 		#	return True
 
+		print("DICT: ", isinstance(inJson, dict))
+
 		try:
-			r= requests.post("http://" + self.url + ":" + str(self.port), json=json.loads(data))
+			r= requests.post("http://" + self.url + ":" + str(self.port), json = inJson)
 		except:
 			raise ConnectionError
 			#return
@@ -136,18 +138,20 @@ class ClientStub():
 		outJson["method"]= "sum"
 		outJson["params"]= {"a": a, "b": b}
 		if not notification:
+			print("AGREGA: ", self.id)
 			outJson["id"]= self.id
 			self.id+= 1
 
-		data= json.dumps(outJson)
+		#data= json.dumps(outJson)
+
 
 		if self.batch == BatchStage.ACTIVE:
 			self.req.append(outJson)
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", data)
-		self.error= self.send(data)
+		print("ENVIADO: ", outJson)
+		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
 
@@ -165,15 +169,15 @@ class ClientStub():
 			outJson["id"]= self.id
 			self.id+= 1
 
-		data= json.dumps(outJson)
+		#data= json.dumps(outJson)
 
 		if self.batch == BatchStage.ACTIVE:
 			self.req.append(outJson)
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", data)
-		self.error= self.send(data)
+		print("ENVIADO: ", outJson)
+		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
 
@@ -191,15 +195,15 @@ class ClientStub():
 			outJson["id"]= self.id
 			self.id+= 1
 
-		data= json.dumps(outJson)
+		#data= json.dumps(outJson)
 
 		if self.batch == BatchStage.ACTIVE:
 			self.req.append(outJson)
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", data)
-		self.error= self.send(data)
+		print("ENVIADO: ", outJson)
+		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
 
@@ -217,15 +221,15 @@ class ClientStub():
 			outJson["id"]= self.id
 			self.id+= 1
 
-		data= json.dumps(outJson)
+		#data= json.dumps(outJson)
 
 		if self.batch == BatchStage.ACTIVE:
 			self.req.append(outJson)
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", data)
-		self.error= self.send(data)
+		print("ENVIADO: ", outJson)
+		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
 
@@ -243,15 +247,15 @@ class ClientStub():
 			outJson["id"]= self.id
 			self.id+= 1
 
-		data= json.dumps(outJson)
+		#data= json.dumps(outJson)
 
 		if self.batch == BatchStage.ACTIVE:
 			self.req.append(outJson)
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", data)
-		self.error= self.send(data)
+		print("ENVIADO: ", outJson)
+		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
 
@@ -268,15 +272,15 @@ class ClientStub():
 			outJson["id"]= self.id
 			self.id+= 1
 
-		data= json.dumps(outJson)
+		#data= json.dumps(outJson)
 
 		if self.batch == BatchStage.ACTIVE:
 			self.req.append(outJson)
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", data)
-		self.error= self.send(data)
+		print("ENVIADO: ", outJson)
+		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
 
@@ -294,15 +298,15 @@ class ClientStub():
 			outJson["id"]= self.id
 			self.id+= 1
 
-		data= json.dumps(outJson)
+		#data= json.dumps(outJson)
 
 		if self.batch == BatchStage.ACTIVE:
 			self.req.append(outJson)
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", data)
-		self.error= self.send(data)
+		print("ENVIADO: ", outJson)
+		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
 
@@ -319,15 +323,15 @@ class ClientStub():
 			outJson["id"]= self.id
 			self.id+= 1
 
-		data= json.dumps(outJson)
+		#data= json.dumps(outJson)
 
 		if self.batch == BatchStage.ACTIVE:
 			self.req.append(outJson)
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", data)
-		self.error= self.send(data)
+		print("ENVIADO: ", outJson)
+		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
 
@@ -344,20 +348,20 @@ class ClientStub():
 			outJson["id"]= self.id
 			self.id+= 1
 
-		data= json.dumps(outJson)
+		#data= json.dumps(outJson)
 
 		if self.batch == BatchStage.ACTIVE:
 			self.req.append(outJson)
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", data)
-		self.error= self.send(data)
+		print("ENVIADO: ", outJson)
+		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
 
 
-	def atan2(self, beta, alpha, notification= False):
+	def atan2(self, alpha, beta, notification= False):
 		if self.batch == BatchStage.RECEIVED:
 			self.batch= BatchStage.INACTIVE
 
@@ -369,15 +373,15 @@ class ClientStub():
 			outJson["id"]= self.id
 			self.id+= 1
 
-		data= json.dumps(outJson)
+		#data= json.dumps(outJson)
 
 		if self.batch == BatchStage.ACTIVE:
 			self.req.append(outJson)
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", data)
-		self.error= self.send(data)
+		print("ENVIADO: ", outJson)
+		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
 
@@ -394,15 +398,15 @@ class ClientStub():
 			outJson["id"]= self.id
 			self.id+= 1
 
-		data= json.dumps(outJson)
+		#data= json.dumps(outJson)
 
 		if self.batch == BatchStage.ACTIVE:
 			self.req.append(outJson)
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", data)
-		self.error= self.send(data)
+		print("ENVIADO: ", outJson)
+		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
 
@@ -419,15 +423,15 @@ class ClientStub():
 			outJson["id"]= self.id
 			self.id+= 1
 
-		data= json.dumps(outJson)
+		#data= json.dumps(outJson)
 
 		if self.batch == BatchStage.ACTIVE:
 			self.req.append(outJson)
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", data)
-		self.error= self.send(data)
+		print("ENVIADO: ", outJson)
+		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
 
@@ -444,15 +448,15 @@ class ClientStub():
 			outJson["id"]= self.id
 			self.id+= 1
 
-		data= json.dumps(outJson)
+		#data= json.dumps(outJson)
 
 		if self.batch == BatchStage.ACTIVE:
 			self.req.append(outJson)
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", data)
-		self.error= self.send(data)
+		print("ENVIADO: ", outJson)
+		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
 
@@ -469,15 +473,15 @@ class ClientStub():
 			outJson["id"]= self.id
 			self.id+= 1
 
-		data= json.dumps(outJson)
+		#data= json.dumps(outJson)
 
 		if self.batch == BatchStage.ACTIVE:
 			self.req.append(outJson)
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", data)
-		self.error= self.send(data)
+		print("ENVIADO: ", outJson)
+		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
 
@@ -494,15 +498,15 @@ class ClientStub():
 			outJson["id"]= self.id
 			self.id+= 1
 
-		data= json.dumps(outJson)
+		#data= json.dumps(outJson)
 
 		if self.batch == BatchStage.ACTIVE:
 			self.req.append(outJson)
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", data)
-		self.error= self.send(data)
+		print("ENVIADO: ", outJson)
+		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
 
@@ -519,15 +523,15 @@ class ClientStub():
 			outJson["id"]= self.id
 			self.id+= 1
 
-		data= json.dumps(outJson)
+		#data= json.dumps(outJson)
 
 		if self.batch == BatchStage.ACTIVE:
 			self.req.append(outJson)
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", data)
-		self.error= self.send(data)
+		print("ENVIADO: ", outJson)
+		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
 
@@ -545,15 +549,15 @@ class ClientStub():
 			outJson["id"]= self.id
 			self.id+= 1
 
-		data= json.dumps(outJson)
+		#data= json.dumps(outJson)
 
 		if self.batch == BatchStage.ACTIVE:
 			self.req.append(outJson)
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", data)
-		self.error= self.send(data)
+		print("ENVIADO: ", outJson)
+		self.error= self.send(outJson)
 		if not self.error:
 			return complex(self.res["result"][0], self.res["result"][1])
 
@@ -570,15 +574,15 @@ class ClientStub():
 			outJson["id"]= self.id
 			self.id+= 1
 
-		data= json.dumps(outJson)
+		#data= json.dumps(outJson)
 
 		if self.batch == BatchStage.ACTIVE:
 			self.req.append(outJson)
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", data)
-		self.error= self.send(data)
+		print("ENVIADO: ", outJson)
+		self.error= self.send(outJson)
 		if not self.error:
 			return complex(self.res["result"][0], self.res["result"][1])
 
@@ -595,15 +599,15 @@ class ClientStub():
 			outJson["id"]= self.id
 			self.id+= 1
 
-		data= json.dumps(outJson)
+		#data= json.dumps(outJson)
 
 		if self.batch == BatchStage.ACTIVE:
 			self.req.append(outJson)
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", data)
-		self.error= self.send(data)
+		print("ENVIADO: ", outJson)
+		self.error= self.send(outJson)
 		if not self.error:
 			return complex(self.res["result"][0], self.res["result"][1])
 
