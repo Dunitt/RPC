@@ -96,18 +96,18 @@ bool ClientStub::send(const char* str, long size){
       fprintf(stderr, "curl_easy_perform() failed: %s\n",
               curl_easy_strerror(res));
 
-  	cout << "RECIBIDO: " << chunk.memory << endl;
+  	//cout << "RECIBIDO: " << chunk.memory << endl;
 
   	try{
 		response= json::parse(chunk.memory);
 		free(chunk.memory);
 		chunk.memory= (char*)malloc(1);
 		chunk.size= 0;
-		cout << "BIEN" << endl;
+		//cout << "BIEN" << endl;
 		//return false;
 	}catch(...){
-		cout << "MAL" << endl;
-		cout << "PARSE ERROR" << endl;
+		//cout << "MAL" << endl;
+		//cout << "PARSE ERROR" << endl;
 		free(chunk.memory);
 		chunk.memory= (char*)malloc(1);
 		chunk.size= 0;
@@ -124,8 +124,8 @@ bool ClientStub::send(const char* str, long size){
 		return false;
 	}
 	else{
-		cout << "RARO" << endl;
-		cout << "JSON: " << response << endl;
+		//cout << "RARO" << endl;
+		//cout << "JSON: " << response << endl;
 		throw "Invalid response";
 		return true; //NO SE VA A EJECUTAR
 	}
@@ -156,7 +156,7 @@ void ClientStub::endBatch(){
 
 	batch= READY;
 	string str= request.dump();
-	cout << "ENVIADO: " << str << endl;
+	//cout << "ENVIADO: " << str << endl;
 	send(str.data(), str.size());
 	batch= RECEIVED;
 
@@ -331,7 +331,7 @@ int ClientStub::sum(int a, int b, bool notification= false){
 		return 0;
 	}
 
-	cout << "ENVIADO: " << str << endl;
+	//cout << "ENVIADO: " << str << endl;
 	error= send(str.c_str(), str.size());
 	if(!error && response["result"].is_number_integer())
 		return response["result"].get<int>();
@@ -363,7 +363,7 @@ double ClientStub::sum(double a, double b, bool notification= false){
 		return 0;
 	}
 
-	cout << "ENVIADO: " << str << endl;
+	//cout << "ENVIADO: " << str << endl;
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
 	if(!error && response["result"].is_number_float())
@@ -397,7 +397,7 @@ int ClientStub::subtract(int a, int b, bool notification= false){
 		return 0;
 	}
 
-	cout << "ENVIADO: " << str << endl;
+	//cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -431,7 +431,7 @@ double ClientStub::subtract(double a, double b, bool notification= false){
 		return 0;
 	}
 
-	cout << "ENVIADO: " << str << endl;
+	//cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -466,7 +466,7 @@ int ClientStub::multiply(int a, int b, bool notification= false){
 		return 0;
 	}
 
-	cout << "ENVIADO: " << str << endl;
+	//cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -500,7 +500,7 @@ double ClientStub::multiply(double a, double b, bool notification= false){
 		return 0;
 	}
 
-	cout << "ENVIADO: " << str << endl;
+	//cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -535,7 +535,7 @@ int ClientStub::division(int a, int b, bool notification= false){
 		return 0;
 	}
 
-	cout << "ENVIADO: " << str << endl;
+	//cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -569,7 +569,7 @@ double ClientStub::division(double a, double b, bool notification= false){
 		return 0;
 	}
 
-	cout << "ENVIADO: " << str << endl;
+	//cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -603,7 +603,7 @@ double ClientStub::pow(double a, double b, bool notification= false){
 		return 0;
 	}
 
-	cout << "ENVIADO: " << str << endl;
+	//cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -637,7 +637,7 @@ double ClientStub::sqrt(double a, bool notification= false){
 		return 0;
 	}
 
-	cout << "ENVIADO: " << str << endl;
+	//cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -673,7 +673,7 @@ double ClientStub::cos(double alpha, bool notification= false){
 		return 0;
 	}
 
-	cout << "ENVIADO: " << str << endl;
+	//cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -707,7 +707,7 @@ double ClientStub::sin(double alpha, bool notification= false){
 		return 0;
 	}
 
-	cout << "ENVIADO: " << str << endl;
+	//cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -741,7 +741,7 @@ double ClientStub::tan(double alpha, bool notification= false){
 		return 0;
 	}
 
-	cout << "ENVIADO: " << str << endl;
+	//cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -775,7 +775,7 @@ double ClientStub::atan2(double beta, double alpha, bool notification= false){
 		return 0;
 	}
 
-	cout << "ENVIADO: " << str << endl;
+	//cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -809,7 +809,7 @@ double ClientStub::acos(double alpha, bool notification= false){
 		return 0;
 	}
 
-	cout << "ENVIADO: " << str << endl;
+	//cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -843,7 +843,7 @@ double ClientStub::asin(double alpha, bool notification= false){
 		return 0;
 	}
 
-	cout << "ENVIADO: " << str << endl;
+	//cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -877,7 +877,7 @@ double ClientStub::atan(double alpha, bool notification= false){
 		return 0;
 	}
 
-	cout << "ENVIADO: " << str << endl;
+	//cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -912,7 +912,7 @@ double ClientStub::cosh(double alpha, bool notification= false){
 		return 0;
 	}
 
-	cout << "ENVIADO: " << str << endl;
+	//cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -947,7 +947,7 @@ double ClientStub::sinh(double alpha, bool notification= false){
 		return 0;
 	}
 
-	cout << "ENVIADO: " << str << endl;
+	//cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -982,7 +982,7 @@ double ClientStub::tanh(double alpha, bool notification= false){
 		return 0;
 	}
 
-	cout << "ENVIADO: " << str << endl;
+	//cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -1017,7 +1017,7 @@ complex<double> ClientStub::ccos(complex<double> cplx, bool notification= false)
 		return 0;
 	}
 
-	cout << "ENVIADO: " << str << endl;
+	//cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -1053,7 +1053,7 @@ complex<double> ClientStub::csin(complex<double> cplx, bool notification= false)
 		return 0;
 	}
 
-	cout << "ENVIADO: " << str << endl;
+	//cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -1089,7 +1089,7 @@ complex<double> ClientStub::ctan(complex<double> cplx, bool notification= false)
 		return 0;
 	}
 
-	cout << "ENVIADO: " << str << endl;
+	//cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());

@@ -58,8 +58,8 @@ static int answer_to_connection (void *cls, struct MHD_Connection *connection, c
 
 	if(dataJSON->data != NULL){
 
-		cout << "*****************************************************************************************************" << endl;
-		cout << "RECIBIDO: " << dataJSON->data << endl;
+		//cout << "*****************************************************************************************************" << endl;
+		//cout << "RECIBIDO: " << dataJSON->data << endl;
 
 		//Processor processor;
 
@@ -84,7 +84,7 @@ static int answer_to_connection (void *cls, struct MHD_Connection *connection, c
 		memcpy (page, strResponse.data(), strResponse.size() + 1);
 		page[strResponse.size()]= '\0';
 
-		cout << "ENVIADO: " << page << endl;
+		//cout << "ENVIADO: " << page << endl;
 
 		int ret;
 		struct MHD_Response *response;

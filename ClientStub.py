@@ -33,7 +33,7 @@ class ClientStub():
 
 		self.batch= BatchStage.READY
 		#data= json.dumps(self.req)
-		print("ENVIADO: ", self.req)
+		#print("ENVIADO: ", self.req)
 		self.send(self.req)
 		self.batch= BatchStage.RECEIVED
 
@@ -90,7 +90,7 @@ class ClientStub():
 		#if self.isReady():
 		#	return True
 
-		print("DICT: ", isinstance(inJson, dict))
+		#print("DICT: ", isinstance(inJson, dict))
 
 		try:
 			r= requests.post("http://" + self.url + ":" + str(self.port), json = inJson)
@@ -101,7 +101,7 @@ class ClientStub():
 			#self.error= True
 			return
 
-		print("RECIBIDO: %s" % r.text)
+		#print("RECIBIDO: %s" % r.text)
 
 
 		if r.status_code != requests.codes.OK:
@@ -114,7 +114,7 @@ class ClientStub():
 			raise NameError("Parse error")
 			#print("PARSE ERROR: {}".format(sys.exc_info()[0]))
 			#self.error= True
-			print("SE EJECUTA")
+			#print("SE EJECUTA")
 			return True
 
 		if self.batch == BatchStage.READY:
@@ -138,7 +138,7 @@ class ClientStub():
 		outJson["method"]= "sum"
 		outJson["params"]= {"a": a, "b": b}
 		if not notification:
-			print("AGREGA: ", self.id)
+			#print("AGREGA: ", self.id)
 			outJson["id"]= self.id
 			self.id+= 1
 
@@ -150,7 +150,7 @@ class ClientStub():
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", outJson)
+#		print("ENVIADO: ", outJson)
 		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
@@ -176,7 +176,7 @@ class ClientStub():
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", outJson)
+		#print("ENVIADO: ", outJson)
 		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
@@ -202,7 +202,7 @@ class ClientStub():
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", outJson)
+		#print("ENVIADO: ", outJson)
 		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
@@ -228,7 +228,7 @@ class ClientStub():
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", outJson)
+		#print("ENVIADO: ", outJson)
 		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
@@ -254,7 +254,7 @@ class ClientStub():
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", outJson)
+		#print("ENVIADO: ", outJson)
 		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
@@ -279,7 +279,7 @@ class ClientStub():
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", outJson)
+		#print("ENVIADO: ", outJson)
 		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
@@ -305,7 +305,7 @@ class ClientStub():
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", outJson)
+		#print("ENVIADO: ", outJson)
 		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
@@ -330,7 +330,7 @@ class ClientStub():
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", outJson)
+		#print("ENVIADO: ", outJson)
 		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
@@ -355,7 +355,7 @@ class ClientStub():
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", outJson)
+		#print("ENVIADO: ", outJson)
 		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
@@ -380,7 +380,7 @@ class ClientStub():
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", outJson)
+		#print("ENVIADO: ", outJson)
 		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
@@ -405,7 +405,7 @@ class ClientStub():
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", outJson)
+		#print("ENVIADO: ", outJson)
 		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
@@ -430,7 +430,7 @@ class ClientStub():
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", outJson)
+		#print("ENVIADO: ", outJson)
 		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
@@ -455,7 +455,7 @@ class ClientStub():
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", outJson)
+		#print("ENVIADO: ", outJson)
 		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
@@ -480,7 +480,7 @@ class ClientStub():
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", outJson)
+		#print("ENVIADO: ", outJson)
 		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
@@ -505,7 +505,7 @@ class ClientStub():
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", outJson)
+		#print("ENVIADO: ", outJson)
 		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
@@ -530,7 +530,7 @@ class ClientStub():
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", outJson)
+		#print("ENVIADO: ", outJson)
 		self.error= self.send(outJson)
 		if not self.error:
 			return self.res["result"]
@@ -556,7 +556,7 @@ class ClientStub():
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", outJson)
+		#print("ENVIADO: ", outJson)
 		self.error= self.send(outJson)
 		if not self.error:
 			return complex(self.res["result"][0], self.res["result"][1])
@@ -581,7 +581,7 @@ class ClientStub():
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", outJson)
+		#print("ENVIADO: ", outJson)
 		self.error= self.send(outJson)
 		if not self.error:
 			return complex(self.res["result"][0], self.res["result"][1])
@@ -606,7 +606,7 @@ class ClientStub():
 			return 0
 		#print("PRUEBA")
 
-		print("ENVIADO: ", outJson)
+		#print("ENVIADO: ", outJson)
 		self.error= self.send(outJson)
 		if not self.error:
 			return complex(self.res["result"][0], self.res["result"][1])

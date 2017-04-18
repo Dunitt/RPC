@@ -62,7 +62,7 @@ json Dispatcher::Dispatch(REQUEST_DATA req){
 		complex<double> cplx(req.params[0], req.params[1]);
 		cplx= _Dispatch(req.method, cplx);
 		req.result= json::array({real(cplx), imag(cplx)});
-		cout << "RESULTADO: " << cplx << endl;
+		//cout << "RESULTADO: " << cplx << endl;
 
 	}else if(all_of(req.types.begin(), req.types.end(), [](TYPE_DATA t){return t == INTEGER;})){
 
@@ -70,7 +70,7 @@ json Dispatcher::Dispatch(REQUEST_DATA req){
 
 		int r= _Dispatch(req.method, req.params[0].get<int>(), another);
 		req.result= r;
-		cout << "RESULTADO: " << r << endl;
+		//cout << "RESULTADO: " << r << endl;
 
 	}else if(all_of(req.types.begin(), req.types.end(), [](TYPE_DATA t){return t == DOUBLE;})){
 
@@ -78,7 +78,7 @@ json Dispatcher::Dispatch(REQUEST_DATA req){
 
 		double r= _Dispatch(req.method, req.params[0].get<double>(), another);
 		req.result= r;
-		cout << "RESULTADO: " << r << endl;
+		//cout << "RESULTADO: " << r << endl;
 
 	}
 
@@ -203,8 +203,8 @@ double Dispatcher::multiply(double a, double b){
 
 
 int Dispatcher::division(int a, int b){
-	if(b == 0)
-		throw std::overflow_error("Divide by zero exception");
+	//if(b == 0)
+		//throw std::overflow_error("Divide by zero exception");
 	return a / b;
 }
 

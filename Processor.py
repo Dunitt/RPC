@@ -69,7 +69,7 @@ class Processor():
 
 			else:
 				out= self.dispatcher.Dispatch(itJson)
-				print("OUT: ", out)
+				#print("OUT: ", out)
 
 			if not notification:
 				self.response.append(out)

@@ -11,7 +11,7 @@ namespace ns{
     void to_json(json& j, const REQUEST_DATA& r){
        
     	//Definir esto como una conversión de REQUEST_DATA a json y viceversa.
-    	cout << "**********************************************" << endl;
+    	/*cout << "**********************************************" << endl;
     	cout << "REQUEST_DATA: " << endl;
     	cout << "NOTIFICATION: " << r.notification << endl;
     	cout << "ID: " << r.id << endl;
@@ -24,7 +24,7 @@ namespace ns{
     	for(int i= 0; i<r.types.size(); ++i)
     		cout << " " << r.types[i];
     	cout << endl;
-    	cout << "**********************************************" << endl;
+    	cout << "**********************************************" << endl;*/
 
     	if(r.notification){
     		j= nullptr;
@@ -38,11 +38,11 @@ namespace ns{
     	}
 
 		j["id"]= r.id;
-
+/*
 		cout << "**********************************************" << endl;
 		cout << "JSON: " << endl << j.dump(4) << endl;
 		cout << "**********************************************" << endl;
-
+*/
     }
 
     void from_json(const json& j, REQUEST_DATA& r){
@@ -94,9 +94,9 @@ Processor::Processor(const char *inRequest){
 
 	try{
 		inJson= json::parse(inRequest);
-		cout << "CONTINUA" << endl;
+		//cout << "CONTINUA" << endl;
 	}catch(exception& e){
-		cout << "EXCEPTION" << endl;
+		//cout << "EXCEPTION" << endl;
 		outJson= Errors[STATUS::PARSE_ERROR];
 		return;
 		//throw;
@@ -107,7 +107,7 @@ Processor::Processor(const char *inRequest){
 		return;
 	}
 
-	cout << "PASO" << endl;
+	//cout << "PASO" << endl;
 	if(inJson.is_object()){
 
 		isBatch= false;
@@ -295,7 +295,7 @@ void Processor::Process(){
 		out= nullptr;
 		notification= false;
 		status= validate(it->dump());
-		cout << "STATUS: " << status << endl;
+		//cout << "STATUS: " << status << endl;
 		if(status != PARSE_ERROR && status != INVALID_REQUEST && it->find("id") == it->end())
 			notification= true;
 
@@ -305,14 +305,14 @@ void Processor::Process(){
 			if(status != PARSE_ERROR && status != INVALID_REQUEST && !notification)
 				out["id"]= (*it)["id"];
 
-			cout << out << endl;
+			//cout << out << endl;
 
 		}else{
 
 			//REQUEST_DATA req= *it;
 			//out= dispatcher.Dispatch(req);
 			out= dispatcher.Dispatch(*it);
-			cout << out << endl;
+			//cout << out << endl;
 
 		}
 
@@ -335,20 +335,20 @@ void Processor::Process(){
 */
 
 	if(isBatch){
-		cout << "BATCH" << endl;
+		//cout << "BATCH" << endl;
 		if(!response.empty())
 			outJson= response;
 		else
 			outJson= nullptr;
 	}else if(!response.empty()){
-		cout << "NO BATCH" << endl;
+		//cout << "NO BATCH" << endl;
 		outJson= response[0];
 	}
 
 }
 
 string Processor::getResponse(){
-	cout << "outJson: " << endl;
-	cout << outJson.dump(4) << endl;
+	//cout << "outJson: " << endl;
+	//cout << outJson.dump(4) << endl;
 	return (outJson == nullptr) ? "":outJson.dump();
 }

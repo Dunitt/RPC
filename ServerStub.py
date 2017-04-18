@@ -15,8 +15,8 @@ app = Flask(__name__)
 def index():
 
 	request.get_json(force= True, silent= True)
-	print("*****************************************************************************************************")
-	print("RECIBIDO: %s" % request.data.decode("utf-8 -*-"))
+	#print("*****************************************************************************************************")
+	#print("RECIBIDO: %s" % request.data.decode("utf-8 -*-"))
 
 	data= request.data.decode("utf-8 -*-")
 
@@ -24,7 +24,7 @@ def index():
 	processor.Process()
 	data= processor.getResponse()
 
-	print("ENVIADO: %s" % data)
+	#print("ENVIADO: %s" % data)
 
 	return data
 
