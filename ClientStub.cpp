@@ -82,7 +82,7 @@ bool ClientStub::send(const char* str, long size){
  
     /* if we don't provide POSTFIELDSIZE, libcurl will strlen() by
        itself */ 
-
+	//cout << "JUSTO ANTES: " << str << endl;
 	//cout << "size: " << size << endl;
     curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, size);
  
@@ -156,6 +156,7 @@ void ClientStub::endBatch(){
 
 	batch= READY;
 	string str= request.dump();
+	cout << "ENVIADO: " << str << endl;
 	send(str.data(), str.size());
 	batch= RECEIVED;
 
@@ -323,7 +324,6 @@ int ClientStub::sum(int a, int b, bool notification= false){
 	string str= outJson.dump();
 	//str="[" + str + "]";
 //	cout << "ENVIADO: " << request << endl;
-	cout << "ENVIADO: " << str << endl;
 
 	if(batch == ACTIVE){
 		request.push_back(outJson);
@@ -331,6 +331,7 @@ int ClientStub::sum(int a, int b, bool notification= false){
 		return 0;
 	}
 
+	cout << "ENVIADO: " << str << endl;
 	error= send(str.c_str(), str.size());
 	if(!error && response["result"].is_number_integer())
 		return response["result"].get<int>();
@@ -355,7 +356,6 @@ double ClientStub::sum(double a, double b, bool notification= false){
 	string str= outJson.dump();
 	//str="[" + str + "]";
 //	cout << "ENVIADO: " << request << endl;
-	cout << "ENVIADO: " << str << endl;
 
 	if(batch == ACTIVE){
 		request.push_back(outJson);
@@ -363,6 +363,7 @@ double ClientStub::sum(double a, double b, bool notification= false){
 		return 0;
 	}
 
+	cout << "ENVIADO: " << str << endl;
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
 	if(!error && response["result"].is_number_float())
@@ -389,7 +390,6 @@ int ClientStub::subtract(int a, int b, bool notification= false){
 	string str= outJson.dump();
 	//str="[" + str + "]";
 //	cout << "ENVIADO: " << request << endl;
-	cout << "ENVIADO: " << str << endl;
 
 	if(batch == ACTIVE){
 		request.push_back(outJson);
@@ -397,6 +397,7 @@ int ClientStub::subtract(int a, int b, bool notification= false){
 		return 0;
 	}
 
+	cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -423,7 +424,6 @@ double ClientStub::subtract(double a, double b, bool notification= false){
 	string str= outJson.dump();
 	//str="[" + str + "]";
 //	cout << "ENVIADO: " << request << endl;
-	cout << "ENVIADO: " << str << endl;
 
 	if(batch == ACTIVE){
 		request.push_back(outJson);
@@ -431,6 +431,7 @@ double ClientStub::subtract(double a, double b, bool notification= false){
 		return 0;
 	}
 
+	cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -458,7 +459,6 @@ int ClientStub::multiply(int a, int b, bool notification= false){
 	string str= outJson.dump();
 	//str="[" + str + "]";
 //	cout << "ENVIADO: " << request << endl;
-	cout << "ENVIADO: " << str << endl;
 
 	if(batch == ACTIVE){
 		request.push_back(outJson);
@@ -466,6 +466,7 @@ int ClientStub::multiply(int a, int b, bool notification= false){
 		return 0;
 	}
 
+	cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -492,7 +493,6 @@ double ClientStub::multiply(double a, double b, bool notification= false){
 	string str= outJson.dump();
 	//str="[" + str + "]";
 //	cout << "ENVIADO: " << request << endl;
-	cout << "ENVIADO: " << str << endl;
 
 	if(batch == ACTIVE){
 		request.push_back(outJson);
@@ -500,6 +500,7 @@ double ClientStub::multiply(double a, double b, bool notification= false){
 		return 0;
 	}
 
+	cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -527,7 +528,6 @@ int ClientStub::division(int a, int b, bool notification= false){
 	string str= outJson.dump();
 	//str="[" + str + "]";
 //	cout << "ENVIADO: " << request << endl;
-	cout << "ENVIADO: " << str << endl;
 
 	if(batch == ACTIVE){
 		request.push_back(outJson);
@@ -535,6 +535,7 @@ int ClientStub::division(int a, int b, bool notification= false){
 		return 0;
 	}
 
+	cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -561,7 +562,6 @@ double ClientStub::division(double a, double b, bool notification= false){
 	string str= outJson.dump();
 	//str="[" + str + "]";
 //	cout << "ENVIADO: " << request << endl;
-	cout << "ENVIADO: " << str << endl;
 
 	if(batch == ACTIVE){
 		request.push_back(outJson);
@@ -569,6 +569,7 @@ double ClientStub::division(double a, double b, bool notification= false){
 		return 0;
 	}
 
+	cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -595,7 +596,6 @@ double ClientStub::pow(double a, double b, bool notification= false){
 	string str= outJson.dump();
 	//str="[" + str + "]";
 //	cout << "ENVIADO: " << request << endl;
-	cout << "ENVIADO: " << str << endl;
 
 	if(batch == ACTIVE){
 		request.push_back(outJson);
@@ -603,6 +603,7 @@ double ClientStub::pow(double a, double b, bool notification= false){
 		return 0;
 	}
 
+	cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -629,7 +630,6 @@ double ClientStub::sqrt(double a, bool notification= false){
 	string str= outJson.dump();
 	//str="[" + str + "]";
 //	cout << "ENVIADO: " << request << endl;
-	cout << "ENVIADO: " << str << endl;
 
 	if(batch == ACTIVE){
 		request.push_back(outJson);
@@ -637,6 +637,7 @@ double ClientStub::sqrt(double a, bool notification= false){
 		return 0;
 	}
 
+	cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -665,7 +666,6 @@ double ClientStub::cos(double alpha, bool notification= false){
 	string str= outJson.dump();
 	//str="[" + str + "]";
 //	cout << "ENVIADO: " << request << endl;
-	cout << "ENVIADO: " << str << endl;
 
 	if(batch == ACTIVE){
 		request.push_back(outJson);
@@ -673,6 +673,7 @@ double ClientStub::cos(double alpha, bool notification= false){
 		return 0;
 	}
 
+	cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -699,7 +700,6 @@ double ClientStub::sin(double alpha, bool notification= false){
 	string str= outJson.dump();
 	//str="[" + str + "]";
 //	cout << "ENVIADO: " << request << endl;
-	cout << "ENVIADO: " << str << endl;
 
 	if(batch == ACTIVE){
 		request.push_back(outJson);
@@ -707,6 +707,7 @@ double ClientStub::sin(double alpha, bool notification= false){
 		return 0;
 	}
 
+	cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -733,7 +734,6 @@ double ClientStub::tan(double alpha, bool notification= false){
 	string str= outJson.dump();
 	//str="[" + str + "]";
 //	cout << "ENVIADO: " << request << endl;
-	cout << "ENVIADO: " << str << endl;
 
 	if(batch == ACTIVE){
 		request.push_back(outJson);
@@ -741,6 +741,7 @@ double ClientStub::tan(double alpha, bool notification= false){
 		return 0;
 	}
 
+	cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -767,7 +768,6 @@ double ClientStub::atan2(double beta, double alpha, bool notification= false){
 	string str= outJson.dump();
 	//str="[" + str + "]";
 //	cout << "ENVIADO: " << request << endl;
-	cout << "ENVIADO: " << str << endl;
 
 	if(batch == ACTIVE){
 		request.push_back(outJson);
@@ -775,6 +775,7 @@ double ClientStub::atan2(double beta, double alpha, bool notification= false){
 		return 0;
 	}
 
+	cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -801,7 +802,6 @@ double ClientStub::acos(double alpha, bool notification= false){
 	string str= outJson.dump();
 	//str="[" + str + "]";
 //	cout << "ENVIADO: " << request << endl;
-	cout << "ENVIADO: " << str << endl;
 
 	if(batch == ACTIVE){
 		request.push_back(outJson);
@@ -809,6 +809,7 @@ double ClientStub::acos(double alpha, bool notification= false){
 		return 0;
 	}
 
+	cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -835,7 +836,6 @@ double ClientStub::asin(double alpha, bool notification= false){
 	string str= outJson.dump();
 	//str="[" + str + "]";
 //	cout << "ENVIADO: " << request << endl;
-	cout << "ENVIADO: " << str << endl;
 
 	if(batch == ACTIVE){
 		request.push_back(outJson);
@@ -843,6 +843,7 @@ double ClientStub::asin(double alpha, bool notification= false){
 		return 0;
 	}
 
+	cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -869,7 +870,6 @@ double ClientStub::atan(double alpha, bool notification= false){
 	string str= outJson.dump();
 	//str="[" + str + "]";
 //	cout << "ENVIADO: " << request << endl;
-	cout << "ENVIADO: " << str << endl;
 
 	if(batch == ACTIVE){
 		request.push_back(outJson);
@@ -877,6 +877,7 @@ double ClientStub::atan(double alpha, bool notification= false){
 		return 0;
 	}
 
+	cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -904,7 +905,6 @@ double ClientStub::cosh(double alpha, bool notification= false){
 	string str= outJson.dump();
 	//str="[" + str + "]";
 //	cout << "ENVIADO: " << request << endl;
-	cout << "ENVIADO: " << str << endl;
 
 	if(batch == ACTIVE){
 		request.push_back(outJson);
@@ -912,6 +912,7 @@ double ClientStub::cosh(double alpha, bool notification= false){
 		return 0;
 	}
 
+	cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -939,7 +940,6 @@ double ClientStub::sinh(double alpha, bool notification= false){
 	string str= outJson.dump();
 	//str="[" + str + "]";
 //	cout << "ENVIADO: " << request << endl;
-	cout << "ENVIADO: " << str << endl;
 
 	if(batch == ACTIVE){
 		request.push_back(outJson);
@@ -947,6 +947,7 @@ double ClientStub::sinh(double alpha, bool notification= false){
 		return 0;
 	}
 
+	cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -974,7 +975,6 @@ double ClientStub::tanh(double alpha, bool notification= false){
 	string str= outJson.dump();
 	//str="[" + str + "]";
 //	cout << "ENVIADO: " << request << endl;
-	cout << "ENVIADO: " << str << endl;
 
 	if(batch == ACTIVE){
 		request.push_back(outJson);
@@ -982,6 +982,7 @@ double ClientStub::tanh(double alpha, bool notification= false){
 		return 0;
 	}
 
+	cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -1009,7 +1010,6 @@ complex<double> ClientStub::ccos(complex<double> cplx, bool notification= false)
 	string str= outJson.dump();
 	//str="[" + str + "]";
 //	cout << "ENVIADO: " << request << endl;
-	cout << "ENVIADO: " << str << endl;
 
 	if(batch == ACTIVE){
 		request.push_back(outJson);
@@ -1017,6 +1017,7 @@ complex<double> ClientStub::ccos(complex<double> cplx, bool notification= false)
 		return 0;
 	}
 
+	cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -1045,7 +1046,6 @@ complex<double> ClientStub::csin(complex<double> cplx, bool notification= false)
 	string str= outJson.dump();
 	//str="[" + str + "]";
 //	cout << "ENVIADO: " << request << endl;
-	cout << "ENVIADO: " << str << endl;
 
 	if(batch == ACTIVE){
 		request.push_back(outJson);
@@ -1053,6 +1053,7 @@ complex<double> ClientStub::csin(complex<double> cplx, bool notification= false)
 		return 0;
 	}
 
+	cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
@@ -1081,7 +1082,6 @@ complex<double> ClientStub::ctan(complex<double> cplx, bool notification= false)
 	string str= outJson.dump();
 	//str="[" + str + "]";
 //	cout << "ENVIADO: " << request << endl;
-	cout << "ENVIADO: " << str << endl;
 
 	if(batch == ACTIVE){
 		request.push_back(outJson);
@@ -1089,6 +1089,7 @@ complex<double> ClientStub::ctan(complex<double> cplx, bool notification= false)
 		return 0;
 	}
 
+	cout << "ENVIADO: " << str << endl;
 
 	//str= "\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"sum\",\"params\":[1.0,2.0]}";
 	error= send(str.c_str(), str.size());
