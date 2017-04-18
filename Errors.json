@@ -10,8 +10,8 @@
 	{
 		"id": null,
 		"jsonrpc": "2.0",
-		"code": {
-			"error": -32600,
+		"error": {
+			"code": -32600,
 			"message": "Invalid Request."
 		}
 	},

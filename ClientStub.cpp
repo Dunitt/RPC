@@ -175,34 +175,34 @@ int ClientStub::getBatch(unsigned int idx, int *result){
 	if(outJson.find("result") != outJson.end())
 		*result= outJson["result"].get<int>();
 	else
-		if(outJson["code"]["error"] == -32000)
+		if(outJson["error"]["code"] == -32000)
 			throw "Division by zero";
 
-		else if(outJson["code"]["error"] == -32001)
+		else if(outJson["error"]["code"] == -32001)
 			throw "Domain error";
 
-		else if(outJson["code"]["error"] == -32002)
+		else if(outJson["error"]["code"] == -32002)
 			throw "Range error";
 
-		else if(outJson["code"]["error"] == -32003)
+		else if(outJson["error"]["code"] == -32003)
 			throw "Underflow error";
 
-		else if(outJson["code"]["error"] == -32004)
+		else if(outJson["error"]["code"] == -32004)
 			throw "Overflow error";
 
-		else if(outJson["code"]["error"] == -32000)
+		else if(outJson["error"]["code"] == -32000)
 			throw "Division by zero";
 
-		else if(outJson["code"]["error"] == -32600)
+		else if(outJson["error"]["code"] == -32600)
 				throw "Invalid Request";
 
-		else if(outJson["code"]["error"] == -32601)
+		else if(outJson["error"]["code"] == -32601)
 			throw "Method not found";
 
-		else if(outJson["code"]["error"] == -32602)
+		else if(outJson["error"]["code"] == -32602)
 			throw "Invalid params";
 
-		else if(outJson["code"]["error"] == -32002)
+		else if(outJson["error"]["code"] == -32002)
 			throw "Unexpected error";
 		else
 			throw "Invalid response";
@@ -224,34 +224,34 @@ int ClientStub::getBatch(unsigned int idx, double *result){
 	if(outJson.find("result") != outJson.end())
 		*result= outJson["result"].get<double>();
 	else
-		if(outJson["code"]["error"] == -32000)
+		if(outJson["error"]["code"] == -32000)
 			throw "Division by zero";
 
-		else if(outJson["code"]["error"] == -32001)
+		else if(outJson["error"]["code"] == -32001)
 			throw "Domain error";
 
-		else if(outJson["code"]["error"] == -32002)
+		else if(outJson["error"]["code"] == -32002)
 			throw "Range error";
 
-		else if(outJson["code"]["error"] == -32003)
+		else if(outJson["error"]["code"] == -32003)
 			throw "Underflow error";
 
-		else if(outJson["code"]["error"] == -32004)
+		else if(outJson["error"]["code"] == -32004)
 			throw "Overflow error";
 
-		else if(outJson["code"]["error"] == -32000)
+		else if(outJson["error"]["code"] == -32000)
 			throw "Division by zero";
 
-		else if(outJson["code"]["error"] == -32600)
+		else if(outJson["error"]["code"] == -32600)
 				throw "Invalid Request";
 
-		else if(outJson["code"]["error"] == -32601)
+		else if(outJson["error"]["code"] == -32601)
 			throw "Method not found";
 
-		else if(outJson["code"]["error"] == -32602)
+		else if(outJson["error"]["code"] == -32602)
 			throw "Invalid params";
 
-		else if(outJson["code"]["error"] == -32002)
+		else if(outJson["error"]["code"] == -32002)
 			throw "Unexpected error";
 		else
 			throw "Invalid response";
@@ -272,34 +272,34 @@ int ClientStub::getBatch(unsigned int idx, complex<double> *result){
 	if(outJson.find("result") != outJson.end())
 		*result= complex<double>(outJson["result"][0].get<double>(), outJson["result"][1].get<double>());
 	else
-		if(outJson["code"]["error"] == -32000)
+		if(outJson["error"]["code"] == -32000)
 			throw "Division by zero";
 
-		else if(outJson["code"]["error"] == -32001)
+		else if(outJson["error"]["code"] == -32001)
 			throw "Domain error";
 
-		else if(outJson["code"]["error"] == -32002)
+		else if(outJson["error"]["code"] == -32002)
 			throw "Range error";
 
-		else if(outJson["code"]["error"] == -32003)
+		else if(outJson["error"]["code"] == -32003)
 			throw "Underflow error";
 
-		else if(outJson["code"]["error"] == -32004)
+		else if(outJson["error"]["code"] == -32004)
 			throw "Overflow error";
 
-		else if(outJson["code"]["error"] == -32000)
+		else if(outJson["error"]["code"] == -32000)
 			throw "Division by zero";
 
-		else if(outJson["code"]["error"] == -32600)
+		else if(outJson["error"]["code"] == -32600)
 				throw "Invalid Request";
 
-		else if(outJson["code"]["error"] == -32601)
+		else if(outJson["error"]["code"] == -32601)
 			throw "Method not found";
 
-		else if(outJson["code"]["error"] == -32602)
+		else if(outJson["error"]["code"] == -32602)
 			throw "Invalid params";
 
-		else if(outJson["code"]["error"] == -32002)
+		else if(outJson["error"]["code"] == -32002)
 			throw "Unexpected error";
 		else
 			throw "Invalid response";
